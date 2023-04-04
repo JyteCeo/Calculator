@@ -1,23 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Display from './display.components';
+import Button from './button.components';
+import History from './history.components';
 
 function App() {
+  const [input, setInput] = useState('');
+  const [result, setResult] = useState('');
+  const [history, setHistory] = useState([]);
+
+  const handleInput = (value) => {
+    setInput(input + value);
+  };
+
+  const handleClear = () => {
+    setInput('');
+    setResult('');
+  };
+
+  const handleCalculate = () => {
+    try {
+      const calcResult = eval(input);
+      setResult(calcResult);
+      setHistory([...history, { input: input, result: calcResult }]);
+      setInput('');
+    } catch (error) {
+      setResult('Error');
+    }
+  };
+
+  useEffect(() => {
+    const historyData = JSON.parse(localStorage.getItem('history'));
+    if (historyData) {
+      setHistory(historyData);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('history', JSON.stringify(history));
+  }, [history]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="calculator">
+      <Display input={input} result={result} />
+      <div className="buttons">
+        <Button label="1" onClick={() => handleInput('1')} />
+        <Button label="2" onClick={() => handleInput('2')} />
+        <Button label="3" onClick={() => handleInput('3')} />
+        <Button label="+" onClick={() => handleInput('+')} />
+        <Button label="4" onClick={() => handleInput('4')} />
+        <Button label="5" onClick={() => handleInput('5')} />
+        <Button label="6" onClick={() => handleInput('6')} />
+        <Button label="-" onClick={() => handleInput('-')} />
+        <Button label="7" onClick={() => handleInput('7')} />
+        <Button label="8" onClick={() => handleInput('8')} />
+        <Button label="9" onClick={() => handleInput('9')} />
+        <Button label="*" onClick={() => handleInput('*')} />
+        <Button label="0" onClick={() => handleInput('0')} />
+        <Button label="." onClick={() => handleInput('.')} />
+        <Button label="/" onClick={() => handleInput('/')} />
+        <Button label="C" onClick={handleClear} />
+        <Button label="=" onClick={handleCalculate} />
+      </div>
+      <History history={history} />
     </div>
   );
 }
