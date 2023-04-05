@@ -1,4 +1,6 @@
-import Calculation from './calculation.components';
+import Calculation from '../calculation.components';
+import './history.styles.css'
+
 
 function History({ history }) {
   return (

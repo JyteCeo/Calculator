@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Calculator
+This is a repo to a functional calculator with history, that performs basic math calculation. I will work on it from time to time to upgrade it to handle more advanced features, such as scientific functions or unit conversions.
+>>>>>>> 21488ca1a89c55bdf23954b65bcbd2e036ee6a6c

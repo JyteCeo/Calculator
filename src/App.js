@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Display from './display.components';
-import Button from './button.components';
-import History from './history.components';
+import Display from './display/display.components';
+import Button from './button/button.components';
+import History from './history/history.components';
+import './App.css';
 
 function App() {
   const [input, setInput] = useState('');
@@ -40,9 +41,9 @@ function App() {
   }, [history]);
 
   return (
-    <div className="calculator">
+    <div className="calculator"> Calculator
       <Display input={input} result={result} />
-      <div className="buttons">
+      <div className="buttons"> 
         <Button label="1" onClick={() => handleInput('1')} />
         <Button label="2" onClick={() => handleInput('2')} />
         <Button label="3" onClick={() => handleInput('3')} />
