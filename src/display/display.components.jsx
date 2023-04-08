@@ -1,4 +1,5 @@
 import React from 'react';
+import './display.styles.css';
 
 function Display({ input, result }) {
   return (
